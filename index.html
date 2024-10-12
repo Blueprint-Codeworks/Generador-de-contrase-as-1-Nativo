@@ -16,57 +16,50 @@
     <div class="cards-page">
       <div class="container">
         <!-- Título Principal -->
-         
         <div class="containerTitle text-center my-5">
-          <h1 class="main-title">Verificación de contraseñas</h1>
+          <h1 class="main-title">Generador de Contraseñas</h1>
           <p class="subtitle text-lg text-gray-600">
-            Explora nuestra verificacion de contraseñas
+            Explora nuestro generador de contraseñas
           </p>
         </div>
         <div class="container">
-        
           <div class="card">
-            <div class="password-input-container">
-              <label for="passwordInput" class="label-range">Ingresa tu contraseña:</label>
-              <div class="password-wrapper">
-                <input
-                  type="password"
-                  id="passwordInput"
-                  class="customInput password-input"
-                  placeholder="Escribe tu contraseña..."
-                />
-                <button type="button" id="togglePassword" class="toggle-password">
-                  👁️
-                </button>
-              </div>
-            </div>
-        
-            <div class="password-strength-container">
-              <label for="passwordStrength" class="label-range">Nivel de seguridad:</label>
+            <div class="password-output-container">
               <input
-                type="range"
-                id="passwordStrength"
-                min="0"
-                max="100"
-                value="0"
-                class="range-input"
-                disabled
+                type="text"
+                id="passwordOutput"
+                class="customInput password-output"
+                readonly
+                placeholder="Tu contraseña aparecerá aquí"
               />
-              <p id="passwordFeedback" class="password-feedback">Introduce una contraseña para evaluarla.</p>
+              <button class="copy-button" id="copyButton">Copiar</button>
             </div>
-        
-            <div class="password-improvement-container">
-              <p id="passwordImprovement" class="password-improvement"></p>
-              <p class="password-examples">Transforma tu contraseña en algo más seguro:</p>
-              <ul id="passwordExamplesList">
-                <!-- Ejemplos generados automáticamente aparecerán aquí -->
-              </ul>
-            </div>
+
+            <div class="options-container">
+                <label><input type="checkbox" id="includeUppercase" checked /> Incluir mayúsculas</label>
+                <label><input type="checkbox" id="includeLowercase" checked /> Incluir minúsculas</label>
+                <label><input type="checkbox" id="includeNumbers" checked /> Incluir números</label>
+                <label><input type="checkbox" id="includeSymbols" /> Incluir símbolos</label>
+              </div>
+
+            <label for="passwordLength" class="label-range"
+              >Longitud de la contraseña:
+              <span id="passwordLengthValue">12</span></label
+            >
+            <input
+              type="range"
+              id="passwordLength"
+              min="4"
+              max="20"
+              value="12"
+              class="range-input"
+            />
+
+            <button class="generate-button" id="generateButton">
+              Generar Contraseña
+            </button>
           </div>
         </div>
-        
-        
-        
 
         <!-- Sección de redes sociales -->
         <div class="social-section">

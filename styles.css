@@ -1,71 +1,113 @@
 /* Estilos generales */
 body {
-  padding: 40px;
-  background-color: #121212; /* Color de fondo ajustado */
-  min-height: 100vh; /* Altura mínima de 100vh */
-  color: #ffffff; /* Color de texto en blanco para mayor contraste */
-}
+    padding: 40px;
+    background-color: #121212; /* Color de fondo ajustado */
+    min-height: 100vh; /* Altura mínima de 100vh */
+    color: #ffffff; /* Color de texto en blanco para mayor contraste */
+  }
 
 .container {
-  text-align: center;
+    text-align: center;
 }
 
-.cards-page {
-  display: flex;
-  justify-content: center;
-}
+.cards-page{
+    display: flex;
+    justify-content: center;
+  }
+
 /* Estilo de la tarjeta */
 .card {
     background-color: #1d1d1d;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    width: 100%;
 }
 
-/* Estilo del input de contraseña */
-.password-input-container {
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.password-wrapper {
-    position: relative;
+/* Estilo del campo de salida de contraseña */
+.password-output-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 }
 
-.customInput {
-    width: 100%;
+.password-output {
+    width: 70%;
     padding: 12px;
+    font-size: 1.1rem;
     background-color: #2a2a2a;
-    border: 1px solid #444;
     color: white;
+    border: 1px solid #444;
     border-radius: 4px;
+}
+
+.copy-button {
+    background-color: #ff9800;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s;
     font-size: 1.1rem;
 }
 
-/* Botón de mostrar/ocultar contraseña */
-.toggle-password {
-    background: none;
-    border: none;
-    position: absolute;
-    right: 10px;
+.copy-button:hover {
+    background-color: #ffa500;
+}
+
+/* Estilo de los checkboxes y etiquetas */
+.options-container {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.options-container label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
     font-size: 1.2rem;
-    cursor: pointer;
-    color: #ff9800;
 }
 
-.toggle-password:hover {
-    color: #ffa500;
+.options-container input[type="checkbox"] {
+    appearance: none;
+    background-color: #2a2a2a;
+    border: 2px solid #444;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Estilo para la etiqueta y el rango de seguridad */
-.password-strength-container {
+/* Estilo del checkbox cuando está seleccionado */
+.options-container input[type="checkbox"]:checked {
+    background-color: #ff9800;
+    box-shadow: 0 0 10px rgba(255, 140, 0, 0.6);
+    border-color: #ff9800;
+}
+
+/* Icono del tilde dentro del checkbox */
+.options-container input[type="checkbox"]:checked::after {
+    content: "✔";
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Estilo del slider */
+/* Contenedor para la longitud de la contraseña */
+.password-length-container {
     margin-bottom: 20px;
     text-align: left;
 }
 
+/* Etiqueta de la longitud */
 .label-range {
     display: flex;
     justify-content: space-between;
@@ -74,16 +116,33 @@ body {
     color: #ffffff;
 }
 
+.password-length-value {
+    background-color: #2a2a2a;
+    color: #ff9800;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+}
+
+/* Estilo para el input de tipo range */
 .range-input {
-    -webkit-appearance: none;
+    -webkit-appearance: none; /* Eliminar estilo por defecto en navegadores Webkit */
     width: 100%;
     height: 8px;
     background: #444;
     border-radius: 5px;
     outline: none;
     transition: background 0.3s ease;
+    margin-bottom: 30px;
 }
 
+.range-input:hover {
+    background: #555;
+}
+
+/* Thumb del range (la "perilla" del control deslizante) */
 .range-input::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -96,6 +155,11 @@ body {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+.range-input::-webkit-slider-thumb:hover {
+    background-color: #ffa500;
+    transform: scale(1.2);
+}
+
 .range-input::-moz-range-thumb {
     width: 18px;
     height: 18px;
@@ -106,105 +170,87 @@ body {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.password-feedback {
+.range-input::-moz-range-thumb:hover {
+    background-color: #ffa500;
+    transform: scale(1.2);
+}
+
+.generate-button {
+    background-color: #ff9800;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
     font-size: 1.2rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.generate-button:hover {
+    background-color: #ffa500;
+    transform: scale(1.05);
+}
+
+/* Estilos responsive */
+@media (max-width: 500px) {
+    .container {
+        max-width: 100%;
+    }
+    .password-output-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+  /* Social section styles */
+  .social-section {
+    text-align: center;
+    margin-top: 50px; /* Ajusta el margen superior */
+    color: white; /* Color del texto */
+  }
+  
+  .blueprint-title {
+    font-size: 36px; /* Tamaño de fuente más grande */
     font-weight: bold;
-    text-align: left;
-    color: #fff;
-    margin-top: 10px;
-}
-
-.password-feedback.poco-segura {
-    color: red;
-}
-
-.password-feedback.segura {
-    color: orange;
-}
-
-.password-feedback.muy-segura {
-    color: green;
-}
-
-.password-improvement-container {
-    margin-top: 20px;
-    text-align: left;
-}
-
-.password-improvement {
-    color: #ff9800;
-    font-size: 1rem;
-}
-
-.password-examples {
-    margin-top: 20px;
-    color: #a9a9a9;
-    font-size: 1.1rem;
-}
-
-.password-examples code {
-    color: #ff9800;
-    font-weight: bold;
-}
-
-#passwordExamplesList {
-    margin-top: 10px;
-    list-style-type: none;
-    padding-left: 0;
-}
-
-#passwordExamplesList li {
-    margin-bottom: 10px;
+  }
+  
+  .social-text {
+    font-size: 24px; /* Tamaño de fuente más grande */
+    margin-bottom: 20px; /* Espaciado debajo del texto */
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaciado entre iconos */
+  }
+  
+  .icon {
+    width: 40px; /* Ajusta el tamaño del icono */
+    height: 40px; /* Ajusta el tamaño del icono */
+    fill: white; /* Color del icono */
+    transition: fill 0.3s ease; /* Transición suave para hover */
+  }
+  
+  .social-icons a:hover .icon {
+    fill: #ff8f00; /* Color al pasar el mouse (naranja) */
+  }
+  
+  .containerTitle {
+    grid-column: span 3; /* El título ocupa tres columnas */
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .main-title {
     color: #ccc;
-}
-/* Social section styles */
-.social-section {
-  text-align: center;
-  margin-top: 50px; /* Ajusta el margen superior */
-  color: white; /* Color del texto */
-}
-
-.blueprint-title {
-  font-size: 36px; /* Tamaño de fuente más grande */
-  font-weight: bold;
-}
-
-.social-text {
-  font-size: 24px; /* Tamaño de fuente más grande */
-  margin-bottom: 20px; /* Espaciado debajo del texto */
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 15px; /* Espaciado entre iconos */
-}
-
-.icon {
-  width: 40px; /* Ajusta el tamaño del icono */
-  height: 40px; /* Ajusta el tamaño del icono */
-  fill: white; /* Color del icono */
-  transition: fill 0.3s ease; /* Transición suave para hover */
-}
-
-.social-icons a:hover .icon {
-  fill: #ff8f00; /* Color al pasar el mouse (naranja) */
-}
-
-.containerTitle {
-  grid-column: span 3; /* El título ocupa tres columnas */
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.main-title {
-  color: #ccc;
-  font-size: 3em;
-  margin: 0;
-}
-
-.subtitle {
-  font-size: 1.5em;
-  margin: 0;
-  color: #a9a9a9;
-}
+    font-size: 3em;
+    margin: 0;
+  }
+  
+  .subtitle {
+    font-size: 1.5em;
+    margin: 0;
+    color: #a9a9a9;
+  }
+  
